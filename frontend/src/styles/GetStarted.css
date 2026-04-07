@@ -1,0 +1,25 @@
+
+    .role-page { font-family: 'Outfit', sans-serif; background: #F5F0E8; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 3rem 2rem; }
+    .role-logo { font-family: 'Cormorant Garamond', serif; text-align: center; font-size: 22px; letter-spacing: 5px; color: #111008; font-weight: 700; margin-bottom: 3rem; }
+    .role-logo span { color: #2A5C22; }
+    .role-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 5vw, 48px); color: #0D0D08; font-weight: 700; text-align: center; margin-bottom: 0.75rem; line-height: 1.15; }
+    .role-sub { font-size: 15px; color: #555; text-align: center; margin-bottom: 3rem; font-weight: 400; max-width: 400px; }
+    .role-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; width: 100%; max-width: 560px; }
+    .role-card { background: #fff; border: 1.5px solid rgba(0,0,0,0.08); border-radius: 12px; padding: 2.5rem 2rem; cursor: pointer; transition: all 0.2s ease; display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; position: relative; overflow: hidden; }
+    .role-card:hover { border-color: #2A5C22; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(42,92,34,0.12); }
+    .role-card.active { border-color: #2A5C22; background: #F0F7EE; }
+    .role-icon { width: 52px; height: 52px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 24px; }
+    .role-card.farmer .role-icon { background: rgba(42,92,34,0.1); }
+    .role-card.investor .role-icon { background: rgba(139,91,38,0.1); }
+    .role-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #0D0D08; font-weight: 700; line-height: 1.1; }
+    .role-desc { font-size: 13px; color: #555; line-height: 1.7; font-weight: 400; }
+    .role-arrow { margin-top: auto; font-size: 18px; color: #2A5C22; opacity: 0; transition: opacity 0.2s; }
+    .role-card:hover .role-arrow { opacity: 1; }
+    .role-check { position: absolute; top: 1rem; right: 1rem; width: 22px; height: 22px; border-radius: 50%; background: #2A5C22; display: none; align-items: center; justify-content: center; color: #fff; font-size: 12px; font-weight: 600; }
+    .role-card.active .role-check { display: flex; }
+    .role-continue { margin-top: 2.5rem; background: #2A5C22; color: #fff; border: none; padding: 15px 48px; border-radius: 4px; font-size: 15px; font-weight: 600; cursor: pointer; font-family: 'Outfit', sans-serif; opacity: 0.4; transition: opacity 0.2s; pointer-events: none; }
+    .role-continue.ready { opacity: 1; pointer-events: all; }
+    .role-signin { margin-top: 1.5rem; font-size: 13px; color: #888; }
+    .role-signin a { color: #2A5C22; font-weight: 600; text-decoration: none; }
+    .back-link { position: absolute; top: 2rem; left: 2rem; font-size: 13px; color: #555; cursor: pointer; font-weight: 500; text-decoration: none; }
+    .back-link:hover { color: #2A5C22; }
