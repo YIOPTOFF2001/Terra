@@ -4,7 +4,7 @@ function Footer() {
   return (
     <footer className="foot">
       <div className="foot-logo">TERRA</div>
-      <p>Terra . Mozambique • 2026 • Invest in the earth. Feed the future.</p>
+      <p>Terra . Mozambique • 2026 • Fresh from the farm. Straight to your door.</p>
     </footer>
   )
 }

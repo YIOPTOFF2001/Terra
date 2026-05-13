@@ -110,3 +110,20 @@
           .hero-left { padding: 3rem 1.5rem; }
             .hero-right { padding: 3rem 1.5rem; }
         }
+
+
+.audience-tabs { display: flex; gap: 8px; margin-bottom: 2.5rem; padding: 2rem 3.5rem 2rem 0;}
+.aud-tab { padding: 8px 20px; border-radius: 100px; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; font-weight: 600; cursor: pointer; border: 1px solid rgba(42,92,34,0.25); background: transparent; color: #2A5C22; transition: all 0.2s; }
+.aud-tab.active { background: #2A5C22; color: #fff; border-color: #2A5C22; }
+.hc-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 1rem; }
+.hc-mini-tag { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #2A5C22; background: rgba(42,92,34,0.08); padding: 3px 10px; border-radius: 100px; font-weight: 600; }        
+
+.how { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; margin-top: 3rem; }
+
+.hc { border-top: 2px solid rgba(42,92,34,0.2); padding-top: 1.5rem; padding-bottom: 2rem; padding-right: 2rem; position: relative; }
+
+.hc:not(:last-child)::after { content: ''; position: absolute; right: 0; top: 1.5rem; bottom: 0; width: 1px; background: rgba(42,92,34,0.12); }
+
+.hc:not(:first-child) { padding-left: 2rem; }
+
+.hc-icon { width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(42,92,34,0.25); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
