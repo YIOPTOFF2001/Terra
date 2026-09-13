@@ -16,6 +16,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/api/auth', authRoutes);
+app.use('/api/farmer', require('./routes/farmer.routes'));
 
 app.get('/', (req, res) => {
   res.json({ message: 'Terra API is running' });

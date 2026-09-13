@@ -21,6 +21,7 @@ function App() {
       <Route path="/dashboard/customer" element={<CustomerDashboard />} />
       <Route path="/dashboard/admin" element={<AdminDashboard />} />
       
+      
   
     </Routes>
   )     

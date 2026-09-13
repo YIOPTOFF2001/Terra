@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const css = `
   @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap');
@@ -247,15 +247,126 @@ export default function FarmerDashboard() {
   const [produce, setProduce] = useState(null);
   const [form, setForm] = useState({ qty: "", price: "", notes: "" });
   const [done, setDone] = useState(false);
+  const [banking, setBanking] = useState({
+  bankName: '', accountName: '', accountNumber: '',
+  mpesaNumber: '', mpesaName: ''
+});
+const [bankingSaved, setBankingSaved] = useState(false);
 
   const name = localStorage.getItem('name') || "Farmer";
   const initials = name.split(" ").map(n => n[0]).join("");
+  const [farmer, setFarmer] = useState(null);
+const [stats, setStats] = useState({ totalListings: 0, totalSoldKg: 0, totalRevenue: 0 });
+const [listings, setListings] = useState([]);
+const token = localStorage.getItem('token');
 
-  const submit = () => {
-    if (!produce || !form.qty || !form.price) return;
-    setDone(true);
-    setTimeout(() => { setDone(false); setProduce(null); setForm({ qty:"", price:"", notes:"" }); }, 4500);
+useEffect(() => {
+  const fetchDashboard = async () => {
+    try {
+      const [dashRes, produceRes, bankingRes] = await Promise.all([
+        fetch('http://localhost:3000/api/farmer/dashboard', {
+          headers: { 'Authorization': `Bearer ${token}` }
+        }),
+        fetch('http://localhost:3000/api/farmer/produce', {
+          headers: { 'Authorization': `Bearer ${token}` }
+        }),
+        fetch('http://localhost:3000/api/farmer/banking', {
+          headers: { 'Authorization': `Bearer ${token}` }
+        })
+      ]);
+
+      const dashData = await dashRes.json();
+      const produceData = await produceRes.json();
+      const bankingData = await bankingRes.json();
+
+      if (dashRes.ok) {
+        setFarmer(dashData.farmer);
+        setStats(dashData.stats);
+      }
+
+      if (produceRes.ok) {
+        setListings(produceData.listings);
+      }
+      if (bankingRes.ok && bankingData.details) {
+        setBanking({
+          bankName: bankingData.details.bankName || '',
+          accountName: bankingData.details.accountName || '',
+          accountNumber: bankingData.details.accountNumber || '',
+          mpesaNumber: bankingData.details.mpesaNumber || '',
+          mpesaName: bankingData.details.mpesaName || ''
+        });
+        }
+
+    } catch (err) {
+      console.error('Dashboard error:', err);
+    }
   };
+  fetchDashboard();
+}, []);
+
+ const submit = async () => {
+  if (!produce || !form.qty || !form.price) return;
+  try {
+    const res = await fetch('http://localhost:3000/api/farmer/produce', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        produceType: produce,
+        quantity: Number(form.qty),
+        askingPrice: Number(form.price),
+        notes: form.notes
+      })
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      alert(data.message || 'Submission failed');
+      return;
+    }
+
+    setDone(true);
+    setListings(prev => [data.produce, ...prev]);
+    setStats(prev => ({ ...prev, totalListings: prev.totalListings + 1 }));
+    setTimeout(() => {
+      setDone(false);
+      setProduce(null);
+      setForm({ qty: "", price: "", notes: "" });
+    }, 4500);
+
+  } catch (err) {
+    alert('Something went wrong. Please try again.');
+  }
+};
+
+const saveBanking = async () => {
+  try {
+    const res = await fetch('http://localhost:3000/api/farmer/banking', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify(banking)
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      alert(data.message || 'Failed to save banking details');
+      return;
+    }
+
+    setBankingSaved(true);
+    setTimeout(() => setBankingSaved(false), 3000);
+
+  } catch (err) {
+    alert('Something went wrong. Please try again.');
+  }
+};
 
   const Pill = ({ status }) => {
     const s = STATUS_MAP[status] || { label: status, cls: "" };
@@ -283,7 +394,7 @@ export default function FarmerDashboard() {
             <div className="t-avatar">{initials}</div>
             <div>
               <div className="t-user-name">{name}</div>
-              <div className="t-user-sub">Farmer · Gaza Province</div>
+              <div className="t-user-sub">Farmer ·{farmer?.location || '...'} </div>
             </div>
           </div>
         </aside>
@@ -321,17 +432,17 @@ export default function FarmerDashboard() {
             <div className="t-stats">
               <div className="t-stat">
                 <div className="t-stat-head"><div className="t-stat-label">Total Listings</div><div className="t-stat-icon">🌱</div></div>
-                <div className="t-stat-val">5</div>
+                <div className="t-stat-val"> {stats.totalListings}</div>
                 <div className="t-stat-unit">submitted to Terra</div>
               </div>
               <div className="t-stat">
                 <div className="t-stat-head"><div className="t-stat-label">Produce Sold</div><div className="t-stat-icon">✓</div></div>
-                <div className="t-stat-val">50<span style={{fontSize:20}}>kg</span></div>
+                <div className="t-stat-val"> {stats.totalSoldKg}<span style={{fontSize:20}}>kg</span></div>
                 <div className="t-stat-unit">delivered & confirmed</div>
               </div>
               <div className="t-stat">
                 <div className="t-stat-head"><div className="t-stat-label">Total Earned</div><div className="t-stat-icon">💰</div></div>
-                <div className="t-stat-val" style={{fontSize:28}}>MT 2,500</div>
+                <div className="t-stat-val" style={{fontSize:28}}>MT {stats.totalRevenue.toFixed(2)}</div>
                 <div className="t-stat-unit">lifetime earnings</div>
               </div>
             </div>
@@ -344,9 +455,16 @@ export default function FarmerDashboard() {
               <table className="t-table">
                 <thead><tr><th>Produce</th><th>Qty</th><th>Price</th><th>Submitted</th><th>Status</th></tr></thead>
                 <tbody>
-                  {LISTINGS.slice(0,3).map(l => (
-                    <tr key={l.id}><td>{l.produce}</td><td>{l.qty}</td><td>{l.price}</td><td>{l.date}</td><td><Pill status={l.status} /></td></tr>
-                  ))}
+                  {listings.slice(0,3).map(l => (
+  <tr key={l._id}>
+    <td>{l.produceType === 'onions' ? '🧅 Onions' : '🍅 Tomatoes'}</td>
+    <td>{l.quantity} kg</td>
+    <td>MT {l.askingPrice}</td>
+    <td>{new Date(l.createdAt).toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' })}</td>
+    <td><Pill status={l.status} /></td>
+  </tr>
+))}
+                  
                 </tbody>
               </table>
             </div>
@@ -410,17 +528,6 @@ export default function FarmerDashboard() {
                       <label className="t-label">Asking Price (MT)</label>
                       <input className="t-input" type="number" placeholder="e.g. 2500" value={form.price} onChange={e => setForm({...form, price:e.target.value})} />
                     </div>
-                    <div className="t-field span2">
-                      <label className="t-label">Photos of Your Produce</label>
-                      <div className="t-upload">
-                        <div className="t-upload-ico">📷</div>
-                        <div className="t-upload-txt">Click to upload photos<br /><span style={{fontSize:11}}>Clear photos help Terra assess quality — JPG or PNG, up to 5MB each</span></div>
-                      </div>
-                    </div>
-                    <div className="t-field span2">
-                      <label className="t-label">Additional Notes (optional)</label>
-                      <textarea className="t-textarea" placeholder="Harvest date, growing area, any other details..." value={form.notes} onChange={e => setForm({...form, notes:e.target.value})} />
-                    </div>
                   </div>
 
                   <div className="t-row-end">
@@ -455,74 +562,113 @@ export default function FarmerDashboard() {
               <table className="t-table">
                 <thead><tr><th>Produce</th><th>Qty</th><th>Price</th><th>Submitted</th><th>Status</th></tr></thead>
                 <tbody>
-                  {LISTINGS.map(l => (
-                    <tr key={l.id}><td>{l.produce}</td><td>{l.qty}</td><td>{l.price}</td><td>{l.date}</td><td><Pill status={l.status} /></td></tr>
-                  ))}
+                  {listings.length === 0 ? (
+  <tr><td colSpan={5} style={{textAlign:'center', color:'var(--ink-3)', padding:'32px'}}>No listings yet. Submit your first produce above.</td></tr>
+) : (
+  listings.map(l => (
+    <tr key={l._id}>
+      <td>{l.produceType === 'onions' ? '🧅 Onions' : '🍅 Tomatoes'}</td>
+      <td>{l.quantity} kg</td>
+      <td>MT {l.askingPrice}</td>
+      <td>{new Date(l.createdAt).toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' })}</td>
+      <td><Pill status={l.status} /></td>
+    </tr>
+  ))
+)}
                 </tbody>
               </table>
             </div>
           </>}
 
           {nav === "banking" && <>
-            <div className="t-topbar">
-              <div>
-                <div className="t-page-title">Banking Details</div>
-                <div className="t-page-sub">Where should Terra send your payments?</div>
-              </div>
-            </div>
+  <div className="t-topbar">
+    <div>
+      <div className="t-page-title">Banking Details</div>
+      <div className="t-page-sub">Where should Terra send your payments?</div>
+    </div>
+  </div>
 
-            <div className="t-callout t-callout-green">
-              <div className="t-callout-ico">🔒</div>
-              <div>
-                <div className="t-callout-head">Secure & Confidential</div>
-                <div className="t-callout-body">Your payment details are only used to transfer funds after Terra confirms receipt and approval of your produce. Payment reflects <strong>within 24 hours</strong> of delivery confirmation.</div>
-              </div>
-            </div>
+  {bankingSaved && (
+    <div className="t-callout t-callout-green" style={{marginBottom:24}}>
+      <div className="t-callout-ico">✅</div>
+      <div>
+        <div className="t-callout-head">Details Saved</div>
+        <div className="t-callout-body">Your banking details have been saved successfully.</div>
+      </div>
+    </div>
+  )}
 
-            <div className="t-two-col">
-              <div className="t-card">
-                <div className="t-card-head"><div className="t-card-title">Bank Transfer</div></div>
-                <div className="t-card-body">
-                  <div className="t-field" style={{marginBottom:16}}>
-                    <label className="t-label">Full Name (as on account)</label>
-                    <input className="t-input" placeholder="Maria Machava" />
-                  </div>
-                  <div className="t-field" style={{marginBottom:16}}>
-                    <label className="t-label">Bank</label>
-                    <select className="t-select">
-                      <option>Select your bank</option>
-                      <option>BCI</option>
-                      <option>Millennium BIM</option>
-                      <option>Standard Bank Mozambique</option>
-                      <option>Absa Mozambique</option>
-                      <option>FNB Mozambique</option>
-                    </select>
-                  </div>
-                  <div className="t-field" style={{marginBottom:20}}>
-                    <label className="t-label">Account Number</label>
-                    <input className="t-input" placeholder="0000 0000 0000" />
-                  </div>
-                  <button className="t-btn t-btn-primary" style={{width:'100%'}}>Save Bank Details</button>
-                </div>
-              </div>
+  <div className="t-callout t-callout-green">
+    <div className="t-callout-ico">🔒</div>
+    <div>
+      <div className="t-callout-head">Secure & Confidential</div>
+      <div className="t-callout-body">Your payment details are only used to transfer funds after Terra confirms receipt and approval of your produce. Payment reflects <strong>within 24 hours</strong> of delivery confirmation.</div>
+    </div>
+  </div>
 
-              <div className="t-card">
-                <div className="t-card-head"><div className="t-card-title">M-Pesa</div></div>
-                <div className="t-card-body">
-                  <div className="t-field" style={{marginBottom:16}}>
-                    <label className="t-label">M-Pesa Number</label>
-                    <input className="t-input" placeholder="+258 84 000 0000" />
-                  </div>
-                  <div className="t-field" style={{marginBottom:16}}>
-                    <label className="t-label">Registered Name</label>
-                    <input className="t-input" placeholder="Name on M-Pesa account" />
-                  </div>
-                  <div style={{height:57}}></div>
-                  <button className="t-btn t-btn-primary" style={{width:'100%'}}>Save M-Pesa Details</button>
-                </div>
-              </div>
-            </div>
-          </>}
+  <div className="t-two-col">
+    <div className="t-card">
+      <div className="t-card-head"><div className="t-card-title">Bank Transfer</div></div>
+      <div className="t-card-body">
+        <div className="t-field" style={{marginBottom:16}}>
+          <label className="t-label">Full Name (as on account)</label>
+          <input className="t-input" placeholder="Maria Machava"
+            value={banking.accountName}
+            onChange={e => setBanking({...banking, accountName: e.target.value})}
+          />
+        </div>
+        <div className="t-field" style={{marginBottom:16}}>
+          <label className="t-label">Bank</label>
+          <select className="t-select"
+            value={banking.bankName}
+            onChange={e => setBanking({...banking, bankName: e.target.value})}
+          >
+            <option value="">Select your bank</option>
+            <option>BCI</option>
+            <option>Millennium BIM</option>
+            <option>Standard Bank Mozambique</option>
+            <option>Absa Mozambique</option>
+            <option>FNB Mozambique</option>
+          </select>
+        </div>
+        <div className="t-field" style={{marginBottom:20}}>
+          <label className="t-label">Account Number</label>
+          <input className="t-input" placeholder="0000 0000 0000"
+            value={banking.accountNumber}
+            onChange={e => setBanking({...banking, accountNumber: e.target.value})}
+          />
+        </div>
+        <button className="t-btn t-btn-primary" style={{width:'100%'}} onClick={saveBanking}>
+          Save Bank Details
+        </button>
+      </div>
+    </div>
+
+    <div className="t-card">
+      <div className="t-card-head"><div className="t-card-title">M-Pesa</div></div>
+      <div className="t-card-body">
+        <div className="t-field" style={{marginBottom:16}}>
+          <label className="t-label">M-Pesa Number</label>
+          <input className="t-input" placeholder="+258 84 000 0000"
+            value={banking.mpesaNumber}
+            onChange={e => setBanking({...banking, mpesaNumber: e.target.value})}
+          />
+        </div>
+        <div className="t-field" style={{marginBottom:16}}>
+          <label className="t-label">Registered Name</label>
+          <input className="t-input" placeholder="Name on M-Pesa account"
+            value={banking.mpesaName}
+            onChange={e => setBanking({...banking, mpesaName: e.target.value})}
+          />
+        </div>
+        <div style={{height:57}}></div>
+        <button className="t-btn t-btn-primary" style={{width:'100%'}} onClick={saveBanking}>
+          Save M-Pesa Details
+        </button>
+      </div>
+    </div>
+  </div>
+</>}
 
         </main>
       </div>
