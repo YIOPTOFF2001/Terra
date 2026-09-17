@@ -1,3 +1,3 @@
 # Terra 🌱
 
-![Terra Project Overview](./terra.png)
+![Terra Project Overview](./Images/terra.png)
