@@ -7,6 +7,7 @@
 - [Objective](#objective)
 - [Data Source](#data-source)
 - [Stages](#stages)
+- [Market validation](#market-validation)
 - [Design](#design)
   - [Mockup](#mockup)
   - [Tools](#tools)
@@ -18,16 +19,11 @@
   - [Create the SQL View](#create-the-sql-view)
 - [Testing](#testing)
   - [Data Quality Tests](#data-quality-tests)
-- [Visualization](#visualization)
-  - [Results](#results)
-  - [DAX Measures](#dax-measures)
-- [Analysis](#analysis)
+- [Pilot Launch](#pilot-launch)
+- [Terra AI](#terra-ai)
   - [Findings](#findings)
   - [Validation](#validation)
   - [Discovery](#discovery)
-- [Recommendations](#recommendations)
-  - [Potential ROI](#potential-roi)
-  - [Potential Courses of Actions](#potential-courses-of-actions)
 - [Conclusion](#conclusion)
 
 
@@ -95,7 +91,7 @@ Terra's design is based on early market validation in Mozambique:
  
 
 
-# Market validation
+
 
 ## 1. Market Validation (in progress)
 
@@ -228,7 +224,7 @@ said about current buyers or what vendors said about import prices._
 7. Lusa, 1 Sept 2026, OCHA figures on food insecurity:
    https://aman-alliance.org/Home/ContentDetail/106306
 
-# Design
+## 2. Design
 
 The design stage defines who uses Terra, how they move through it,
 and how it looks. Terra is built for people who may have limited
