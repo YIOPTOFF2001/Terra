@@ -11,7 +11,7 @@
   - [Mockup](#mockup)
   - [Tools](#tools)
 - [Development](#development)
-  - [Pseudocode](#pseudocode)
+  - [Tech](#pseudocode)
   - [Data Exploration](#data-exploration)
   - [Data Cleaning](#data-cleaning)
   - [Transform the Data](#transform-the-data)
@@ -374,4 +374,21 @@ vendor dashboard, not a chat window.
 - [ ] Mobile money payments integration
 - [ ] Offline-friendly mode for areas with poor connectivity
 
+## 3. Development
+
+Terra is a full-stack web application. The frontend, backend and database are built separately and communicate through a REST API.
+
+### 3.1 Tech stack
+
+| Layer | Technology |
+|---|---|
+| Frontend | React |
+| Backend | Node.js, Express |
+| Database | MongoDB (MongoDB Atlas) |
+| Authentication | Token-based auth with role-based access |
+| Styling | Custom design system (green and cream palette, Cormorant Garamond and Outfit fonts) |
+| Version control | Git and GitHub |
+| Terra AI (planned) | LLM API |
+
+### 3.2 Architecture
 
