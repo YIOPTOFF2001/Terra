@@ -445,3 +445,47 @@ npm install
 
 Create a `.env` file in the backend folder:
 
+Never commit your `.env` file. Add it to `.gitignore`.
+
+**Run the app**
+
+```bash
+# backend
+cd server
+npm run dev
+
+# frontend (new terminal)
+cd client
+npm start
+```
+
+### 3.7 Troubleshooting
+
+**MongoDB Atlas connection error (DNS)**
+If the backend cannot connect to Atlas, the cause may be your
+network's DNS settings failing to resolve the Atlas address. Try
+switching your DNS to a public resolver such as Google (8.8.8.8) or
+Cloudflare (1.1.1.1), or use the standard (non-SRV) connection string
+from Atlas.
+
+### 3.8 Development progress
+
+- [x] Project setup (frontend and backend)
+- [x] Authentication routes and controllers
+- [x] Role-based access (farmer, vendor, admin)
+- [x] Produce marketplace UI
+- [ ] Produce listing management (farmers)
+- [ ] Ordering flow (vendors)
+- [ ] Admin verification and order management
+- [ ] Payment status tracking
+- [ ] Notifications
+- [ ] Terra AI recommendation layer
+
+### 3.9 Challenges and decisions
+
+- **Aggregator model over marketplace:** simplifies trust and payment
+  flows, so the data model is built around Terra as the middle party.
+- **Atlas connection issue:** traced to DNS resolution on the local
+  network and fixed by changing DNS settings.
+- **Terra AI kept separate:** planned as an add-on layer so the core
+  platform works without it.
