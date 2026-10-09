@@ -388,3 +388,60 @@ Terra is a full-stack web application. The frontend, backend and database are bu
 
 ### 3.2 Architecture
 
+
+- The frontend renders a different experience for each role.
+- The backend handles authentication, authorization and business
+  logic.
+- Controllers keep route handlers thin and logic organized.
+- MongoDB stores users, produce listings and orders.
+
+### 3.3 Backend
+
+- Express server with modular routes and controllers
+- Authentication routes: register, log in, protected routes
+- Role-based middleware for farmer, vendor and admin access
+- Password hashing and token generation
+- Environment-based configuration
+
+### 3.4 Frontend
+
+- React single-page application
+- Role-specific dashboards and navigation
+- Produce marketplace view
+- Reusable components following the Terra design system
+- Mobile-responsive layout
+
+### 3.5 Database
+
+Main collections (adjust to match your models):
+
+- **Users:** name, contact, role, verification status
+- **Produce:** farmer, product type, quantity, price, availability
+- **Orders:** vendor, items, payment status, delivery status
+
+### 3.6 Getting started
+
+**Prerequisites**
+- Node.js (v18 or later)
+- A MongoDB Atlas account and cluster
+- Git
+
+**Installation**
+
+```bash
+git clone https://github.com/YIOPTOFF2001/<repo-name>.git
+cd <repo-name>
+
+# backend
+cd server
+npm install
+
+# frontend
+cd ../client
+npm install
+```
+
+**Environment variables**
+
+Create a `.env` file in the backend folder:
+
