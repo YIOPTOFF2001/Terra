@@ -479,12 +479,12 @@ from Atlas.
 - [x] Authentication routes and controllers
 - [x] Role-based access (farmer, vendor, admin)
 - [x] Produce marketplace UI
-- [ ] Produce listing management (farmers)
-- [ ] Ordering flow (vendors)
-- [ ] Admin verification and order management
-- [ ] Payment status tracking
-- [ ] Notifications
-- [ ] Terra AI recommendation layer
+- [x] Produce listing management (farmers)
+- [x] Ordering flow (vendors)
+- [x] Admin verification and order management
+- [x] Payment status tracking
+- [x] Notifications
+- [x] Terra AI recommendation layer
 
 ### 3.9 Challenges and decisions
 
@@ -494,3 +494,270 @@ from Atlas.
   network and fixed by changing DNS settings.
 - **Terra AI kept separate:** planned as an add-on layer so the core
   platform works without it.
+
+## 4. Testing
+
+Testing makes sure Terra works for the people who will rely on it:
+farmers, vendors and admins. Because Terra handles orders and
+payments between people who need to trust each other, the focus is
+on correctness, security and ease of use on basic phones.
+
+### 4.1 Testing approach
+
+- **Functional testing:** every feature works for each role.
+- **API testing:** backend routes return the right responses and
+  errors.
+- **Security testing:** users can only access what their role allows.
+- **Usability testing:** real farmers and vendors try the app.
+- **Compatibility testing:** works on common browsers and low-end
+  phones.
+
+### 4.2 Functional testing
+
+**Authentication**
+- [ ] Register with valid details
+- [ ] Register with a duplicate email or phone number is rejected
+- [ ] Log in with correct credentials
+- [ ] Log in with wrong credentials shows a clear error
+- [ ] Logged-out users cannot open protected pages
+
+**Farmer**
+- [ ] Add, edit and remove a produce listing
+- [ ] View orders for their produce
+- [ ] Payment status displays correctly
+
+**Vendor**
+- [ ] Browse available produce
+- [ ] Place an order
+- [ ] Track order status
+- [ ] Order history displays correctly
+
+**Admin**
+- [ ] Verify and reject accounts
+- [ ] View and manage all orders
+- [ ] Assign pickups
+
+### 4.3 Role-based access testing
+
+- [ ] A farmer cannot open vendor or admin pages
+- [ ] A vendor cannot open farmer or admin pages
+- [ ] Only admins can verify users or change prices
+- [ ] Expired or invalid tokens are rejected
+
+### 4.4 API testing
+
+Backend routes tested with Postman (or a similar tool):
+
+| Route | Method | Expected result | Status |
+|---|---|---|---|
+| /api/auth/register | POST | User created | [ ] |
+| /api/auth/login | POST | Token returned | [ ] |
+| _add your routes_ | | | |
+
+### 4.5 Usability testing with real users
+
+Terra will be tested with the first farmers and vendors during the
+pilot, before the full launch.
+
+- [ ] Can a farmer list produce without help?
+- [ ] Can a vendor place an order without help?
+- [ ] Is the Portuguese text clear to them?
+- [ ] Does the app load acceptably on their phones and data?
+
+**Feedback received:** _add real quotes and findings here_
+
+### 4.6 Compatibility testing
+
+- [ ] Chrome (desktop and mobile)
+- [ ] Firefox
+- [ ] Safari or iOS
+- [ ] Low-end Android phone
+- [ ] Slow connection (throttled in browser dev tools)
+
+### 4.7 Bugs found and fixed
+
+| Bug | Cause | Fix | Status |
+|---|---|---|---|
+| MongoDB Atlas connection error | DNS resolution on local network | Changed DNS settings | Fixed |
+| _add more_ | | | |
+
+### 4.8 Results summary
+
+- Tests passed: _/_
+- Critical bugs open: _
+- Ready for pilot launch: yes / no
+
+  ## 5. Pilot Launch
+
+The pilot is Terra's first real-world run. It tests the full chain
+from farm to vendor at small scale before expanding. Nothing launches
+until the exit criteria in Section 1.6 are met.
+
+### 5.1 Pilot goals
+
+- Prove that Terra can buy from verified smallholders and deliver to
+  vendors in Maputo reliably
+- Confirm that the payment model works: farmers paid before trucks
+  move, vendors paying upfront
+- Learn real costs: farmer price, transport, margin
+- Collect feedback from the first farmers and vendors
+- Find operational problems before scaling
+
+### 5.2 Pilot scope
+
+| Item | Pilot setting |
+|---|---|
+| Products | Potatoes and onions |
+| Supply region | Gaza province (first route, about 200 km from Maputo via the EN1) |
+| Delivery market | Maputo |
+| Farmers | At least 5 verified |
+| Vendors | At least 5 confirmed |
+| Duration | _ weeks |
+| Start date | _ |
+
+### 5.3 Pilot prerequisites (go / no-go checklist)
+
+- [ ] 5 farmers confirmed
+- [ ] 5 vendors confirmed
+- [ ] Ground agent in place in Gaza
+- [ ] Transport arranged and costed
+- [ ] Farmer and vendor prices agreed
+- [ ] Payment method set up for farmers and vendors
+- [ ] App tested on the real users' phones
+- [ ] Backend deployed and accessible online
+
+### 5.4 How a pilot order works
+
+1. Vendor places an order and pays upfront
+2. Terra confirms the order with the farmer
+3. Ground agent checks quantity and quality at the farm
+4. Terra pays the farmer before the truck moves
+5. Produce is transported from Gaza to Maputo
+6. Vendor receives the delivery and confirms it
+7. Order is recorded as complete
+
+### 5.5 Pilot roles
+
+| Who | Responsibility |
+|---|---|
+| Terra (founder) | Order management, vendor relations, payments |
+| Ground agent | Farmer contact, quality check, pickup coordination |
+| Farmers | Supply agreed produce |
+| Vendors | Order and pay upfront, confirm delivery |
+| Transport partner | Move produce Gaza to Maputo |
+
+### 5.6 Metrics to track
+
+| Metric | Why it matters | Result |
+|---|---|---|
+| Number of orders completed | Shows demand | _ |
+| Total volume delivered (kg) | Shows scale | _ |
+| Farmer price per kg | Farmer income | _ |
+| Vendor price per kg | Compare to imports | _ |
+| Transport cost per kg | Business viability | _ |
+| Produce lost or rejected (%) | Quality and logistics | _ |
+| On-time deliveries (%) | Reliability | _ |
+| Repeat vendor orders | Vendor satisfaction | _ |
+| Farmer and vendor feedback | Product fit | _ |
+
+### 5.7 Risks and plans
+
+| Risk | Plan |
+|---|---|
+| Spoilage during transport | Choose durable products; limit trip length; check quality at pickup |
+| Weather or road delays | Buffer time; confirm delivery windows with vendors |
+| Vendors prefer existing importers | Compete on freshness, reliability and price; collect feedback |
+| Payment disputes | Clear order records in the app; pay farmers before trucks move |
+| Low farmer supply | Keep backup farmers in Boane and other regions |
+
+### 5.8 After the pilot
+
+- Review the metrics against the goals
+- Decide: adjust, repeat or scale
+- Share lessons learned in Section 6
+
+## 6. Review and Scale
+
+After the pilot, Terra reviews what actually happened and decides
+what to do next. Growth is based on evidence from real orders, not
+assumptions.
+
+### 6.1 Review process
+
+1. Collect all pilot data (orders, volumes, prices, costs, losses)
+2. Compare the results with the pilot goals in Section 5.1
+3. Gather feedback from farmers, vendors and the ground agent
+4. List what worked, what failed and why
+5. Decide: fix, repeat or scale
+
+### 6.2 Questions the review must answer
+
+- Does Terra make money per kg after transport and losses?
+- Are vendors willing to buy from Terra again, and at what price?
+- Do farmers get a better deal than their current options?
+- Was produce delivered fresh and on time?
+- Did the payment model (farmers paid first, vendors pay upfront)
+  work without disputes?
+- Where did the process break down?
+
+### 6.3 Decision criteria
+
+| Result | Decision |
+|---|---|
+| Profitable, vendors reorder, low losses | Scale to more farmers, vendors and volume |
+| Demand is good, but costs or losses are too high | Fix logistics, then repeat the pilot |
+| Vendors will not switch from importers | Revisit pricing, quality and the target vendors |
+| Farmer supply is unreliable | Add more farmers and regions before scaling |
+
+### 6.4 Pilot results
+
+| Metric | Target | Actual |
+|---|---|---|
+| Orders completed | _ | _ |
+| Volume delivered (kg) | _ | _ |
+| Average margin per kg | _ | _ |
+| Produce lost or rejected | _ | _ |
+| On-time deliveries | _ | _ |
+| Repeat vendors | _ | _ |
+
+### 6.5 Lessons learned
+
+_Add real lessons after the pilot._
+
+### 6.6 Scaling plan
+
+**More products**
+Start with products that are already imported in volume and that
+Gaza can grow. After potatoes and onions, the Agriculture Minister
+has named tomatoes and cabbage as imports Mozambique could replace
+(FreshPlaza). Add them one at a time.
+
+**More supply regions**
+Expand beyond Gaza to Boane (about 30 km from Maputo), then Niassa
+and Manica, once ground agents are in place.
+
+**More vendors and markets**
+Grow the number of vendors in Maputo, then look at other cities.
+
+**Stronger operations**
+- More ground agents
+- Reliable transport partners
+- Storage or cold chain, if spoilage data shows it is needed
+
+**Better platform**
+- Mobile money payments
+- Notifications by SMS or WhatsApp
+- Offline-friendly mode for rural areas
+- Reports and dashboards for the admin
+
+### 6.7 Growth principles
+
+- Scale only after the numbers work at small size
+- Add one product or region at a time
+- Keep paying farmers before trucks move
+- Protect quality and trust above speed
+
+### 6.8 Terra AI
+
+Once enough real order data exists, Terra AI (Section 7) can use it
+to recommend what vendors should stock.
