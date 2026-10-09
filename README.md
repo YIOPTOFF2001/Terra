@@ -412,13 +412,13 @@ Terra is a full-stack web application. The frontend, backend and database are bu
 - Mobile-responsive layout
 
   ![Terra home page](Images/who.png)
-  ![Terra home page](Images/who2.png)
+  
 
   
 
 ### 3.5 Database
 
-Main collections (adjust to match your models):
+Main collections:
 
 - **Users:** name, contact, role, verification status
 - **Produce:** farmer, product type, quantity, price, availability
