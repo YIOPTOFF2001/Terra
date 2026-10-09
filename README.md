@@ -55,9 +55,7 @@ coordinate on the ground, farmers are paid before trucks move, and vendors pay u
 In this way, food wastage will reduce as farmers will have a market to sell to and be confident enough to scale their produce.
 
 
-## User story 
-
-## User Stories
+## User stories
 
 ### Farmer
 - As a smallholder farmer, I want to list my produce and available quantity so that buyers in Maputo can find me.
@@ -88,38 +86,145 @@ Terra's design is based on early market validation in Mozambique:
 
 # Stages
 
+- Market validation
 - Design
 - Developement
 - Testing
-- Analysis 
+- Pilot Launch
+- Terra AI 
  
 
 
-# Design 
+# Market validation
 
-## Dashboard components required 
-- What should the dashboard contain based on the requirements provided?
+## 1. Market Validation (in progress)
 
-To understand what it should contain, we need to figure out what questions we need the dashboard to answer:
+Terra is being validated with real farmers and vendors before any
+launch. This section explains the problem, the evidence behind it,
+what has been done so far, and what must happen before launch.
 
-1. Who are the top 10 YouTubers with the most subscribers?
-2. Which 3 channels have uploaded the most videos?
-3. Which 3 channels have the most views?
-4. Which 3 channels have the highest average views per video?
-5. Which 3 channels have the highest views per subscriber ratio?
-6. Which 3 channels have the highest subscriber engagement rate per video uploaded?
+### 1.1 Why Mozambique needs this
 
-For now, these are some of the questions we need to answer, this may change as we progress down our analysis. 
+**Agriculture matters, but farmers are cut off from markets.**
+Agriculture contributes about 24% of GDP and 20% of exports, and the
+sector is dominated by small family farms with little connection to
+the market and limited technology (Ministry of Agriculture official,
+reported by Jornal Notícias). Only about 3% of the roughly 3.9 million
+farms use fertiliser. Smallholders form the majority of the sector,
+yet cultivated land per household has declined and access to inputs
+remains limited and uneven across regions (UNU-WIDER, Agricultural
+Development in Mozambique 2002–2020).
 
+**Mozambique imports vegetables it could grow.**
+South Africa exported about US$58.6M of edible vegetables to
+Mozambique in 2025 (UN COMTRADE via Trading Economics).
 
-## Dashboard mockup
+| Product | 2025 value | 2024 value |
+|---|---|---|
+| Potatoes (fresh) | $25.59M | $20.24M |
+| Onions, shallots, garlic, leeks | $20.63M | $19.19M |
+| Tomatoes | $2.08M | $1.96M |
+| Total vegetables and tubers | $58.57M | $46.82M |
 
-- What should it look like? 
+Potatoes and onions together are about 79% of the 2025 total and 84%
+of the 2024 total. These are the two launch products for Terra.
+Note: the 2025 figures are South African export records and the 2024
+figures are Mozambican import records. Both are formal customs data
+only, so informal cross-border trade is not counted.
 
-Some of the data visuals that may be appropriate in answering our questions include:
+**The government wants to replace these imports.**
+Mozambique's Agriculture Minister, Roberto Albino, has identified
+Gaza province as capable of producing large volumes of potatoes,
+tomatoes, cabbage and onions currently sourced from South Africa, and
+called on producers, seed companies and stakeholders to work toward
+replacing them (FreshPlaza). This supports Gaza as Terra's first
+supply region.
 
-1. Table
-2. Treemap
-3. Scorecards
-4. Horizontal bar chart
+**Food insecurity remains high.**
+About 3.5 million people in Mozambique face acute food insecurity
+(OCHA, reported by Lusa, 1 Sept 2026). Drivers include irregular
+rainfall, repeated cyclones, conflict in the north and high food
+prices (IPC, January 2026). Most severe needs are concentrated in
+Cabo Delgado and Nampula.
+
+**Scope.** Terra does not target humanitarian food aid. It addresses
+market access for smallholders and import dependence for urban
+vendors in Maputo. Lower local prices and more reliable local supply
+are an indirect benefit.
+
+### 1.2 The gap Terra fills
+
+- Farmers have produce but no reliable route, buyer verification or
+  payment certainty for reaching Maputo.
+- Vendors need steady supply and rely on imports for potatoes and
+  onions even though local production is possible.
+- No trusted intermediary connects the two. Terra buys from verified
+  farmers and resells to vendors, with ground agents coordinating.
+
+### 1.3 Comparable models
+
+- **Twiga Foods (Kenya):** aggregates produce from smallholders and
+  supplies urban vendors. Terra follows the same aggregator logic.
+- **Dangote's trajectory:** studied for how a business can scale by
+  controlling supply and distribution in an African market.
+
+### 1.4 Fieldwork completed
+
+- Outreach to farmers and vendors via Facebook and TikTok
+- Portuguese-language outreach messages for local contacts
+- Joined a WhatsApp broadcast group run by a Zimpeto-based importer
+  who sources from South Africa, for pricing and supply intelligence
+- Mapped supply regions: Gaza (preferred first route, about 200 km
+  from Maputo via the EN1), Boane (about 30 km from Maputo), Niassa
+  and Manica
+- Selected launch products (potatoes and onions) based on market
+  demand, transport durability and confirmed supply
+
+### 1.5 Operating model validated so far
+
+- Terra buys directly from verified farmers and resells to vendors in
+  Maputo. It is an aggregator, not a peer-to-peer marketplace.
+- Farmers are paid before trucks move. Vendors pay upfront.
+- Local ground agents coordinate farmer contact and pickups.
+
+### 1.6 Exit criteria (no launch until met)
+
+- [ ] At least 5 farmers confirmed (current: _/5)
+- [ ] At least 5 vendors confirmed (current: _/5)
+- [ ] Price per kg confirmed with farmers: _ MZN
+- [ ] Price per kg vendors currently pay: _ MZN
+- [ ] Transport cost per trip from Gaza to Maputo: _ MZN
+
+### 1.7 Key findings so far
+
+_Add real findings from conversations here, for example what farmers
+said about current buyers or what vendors said about import prices._
+
+### 1.8 Risks and open questions
+
+- Weather and climate shocks (floods, drought, cyclones) can disrupt
+  supply from Gaza.
+- Transport reliability and cost on the EN1.
+- Whether vendors will switch from established importers on price and
+  quality.
+- Seasonality of potato and onion supply.
+
+### 1.9 Sources
+
+1. Trading Economics / UN COMTRADE, South Africa exports of edible
+   vegetables to Mozambique (2025):
+   https://tradingeconomics.com/south-africa/exports/mozambique/edible-vegetables-certain-roots-tubers
+2. Trading Economics / UN COMTRADE, Mozambique imports from South
+   Africa (2024):
+   https://tradingeconomics.com/mozambique/imports/south-africa/edible-vegetables-certain-roots-tubers
+3. FreshPlaza, "Mozambique aims to reduce South African vegetable
+   imports": https://www.freshplaza.com/africa/article/9857418/mozambique-aims-to-reduce-south-african-vegetable-imports/
+4. UNU-WIDER, Agricultural Development in Mozambique 2002–2020:
+   https://igmozambique.wider.unu.edu/opinion/factsheet
+5. Forum Macao / Jornal Notícias, Ministry of Agriculture statistics:
+   https://forumchinaplp.org.mo/en/economic_trade/view/344
+6. IPC Mozambique Acute Food Insecurity Snapshot, Oct 2025 – Mar 2026:
+   https://www.foodsecurityportal.org/sites/default/files/2026-01/IPC_Mozambique_Acute_Food_Insecurity_Oct2025_Mar2026_Snapshot.pdf
+7. Lusa, 1 Sept 2026, OCHA figures on food insecurity:
+   https://aman-alliance.org/Home/ContentDetail/106306
 
