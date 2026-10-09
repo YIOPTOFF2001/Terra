@@ -1,4 +1,4 @@
-# Terra 🌱
+# Terra 🌱:  A farming app for Mozambique
 
 ![Terra Project Overview](./Images/terra.png)
 
