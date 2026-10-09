@@ -854,8 +854,7 @@ replacing those imports. Terra exists to close that gap.
 
 Terra is an aggregator, not a marketplace. It buys directly from
 verified smallholder farmers and resells to vendors in Maputo, with
-ground agents on the ground and a simple rule that builds trust:
-farmers are paid before trucks move, and vendors pay upfront.
+ground agents on the ground and a simple rule that builds trust, farmers are paid immediately.
 
 ### Where Terra stands today
 
@@ -889,7 +888,7 @@ food value inside Mozambique.
 ### Author
 
 **Yolanda Mussana**, full-stack developer
-GitHub: [YIOPTOFF2001](https://github.com/YIOPTOFF2001)
+Vercel: https://terra-9lkg.vercel.app/
 
 ### Acknowledgements
 
