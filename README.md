@@ -434,8 +434,8 @@ Main collections:
 **Installation**
 
 ```bash
-git clone https://github.com/YIOPTOFF2001/<repo-name>.git
-cd <repo-name>
+git clone https://github.com/YIOPTOFF2001/<Terra>.git
+cd <Terra>
 
 # backend
 cd server
