@@ -761,3 +761,85 @@ Grow the number of vendors in Maputo, then look at other cities.
 
 Once enough real order data exists, Terra AI (Section 7) can use it
 to recommend what vendors should stock.
+## 7. Terra AI (planned)
+
+Terra AI is a planned layer on top of the core platform. It uses a
+large language model (LLM) to help vendors decide what to buy, based
+on Terra's own order data. The core platform works fully without it,
+so the AI is an add-on and not a dependency.
+
+**Status:** Planned. It will be built after the pilot, once there is
+real order data to learn from.
+
+### 7.1 Why it is needed
+
+- Vendors in Maputo make buying decisions with little data, often
+  relying on habit or whatever importers offer.
+- Over-ordering leads to waste, and under-ordering leads to lost
+  sales.
+- Terra will hold data on prices, volumes and demand that individual
+  vendors cannot see. Terra AI turns that data into simple advice.
+
+### 7.2 Planned features
+
+- [ ] **Produce recommendations:** suggests what a vendor should
+      order, based on their past orders and current availability
+- [ ] **Market summaries:** short plain-language updates on prices
+      and supply (for example, "onion supply from Gaza is high this
+      week")
+- [ ] **Reorder suggestions:** reminds vendors when they usually
+      restock
+- [ ] **Portuguese output:** recommendations written in clear
+      Portuguese, with English as a secondary language
+
+### 7.3 How it will work
+
+
+- The backend sends the model only the data it needs (aggregated
+  and without personal details).
+- The model's output appears as a short suggestions panel on the
+  vendor dashboard, not a chat window.
+- Vendors stay in control. Terra AI suggests, and the vendor
+  decides.
+
+### 7.4 Design principles
+
+- **Simple:** short suggestions a vendor can read in seconds
+- **Honest:** shows what the suggestion is based on
+- **Safe:** does not place orders or move money by itself
+- **Low data:** works on basic phones and slow connections
+- **Optional:** vendors can ignore or hide it
+
+### 7.5 Data and privacy
+
+- Personal details (names, phone numbers) are not sent to the
+  model.
+- Only summaries and aggregated data are shared with the API.
+- API keys stay in environment variables on the server, never in the
+  frontend or the repository.
+
+### 7.6 Risks and limits
+
+| Risk | Plan |
+|---|---|
+| Wrong or misleading suggestions | Base them on real order data; label them as suggestions; track accuracy |
+| Too little data early on | Launch Terra AI only after enough pilot orders exist |
+| API cost | Cache results; generate summaries on a schedule, not per click |
+| Language quality in Portuguese | Test outputs with real Portuguese speakers before release |
+| Over-reliance by vendors | Keep it advisory only |
+
+### 7.7 Success measures
+
+- Vendors use the suggestions panel regularly
+- Fewer lost or unsold items for vendors who follow suggestions
+- More repeat orders
+- Positive vendor feedback on usefulness
+
+### 7.8 Roadmap for Terra AI
+
+1. Collect order and price data during the pilot
+2. Define the first recommendation use case (what to reorder)
+3. Build a backend endpoint that prepares the data summary
+4. Connect the LLM API and test the outputs
+5. Add the suggestions panel to the vendor dashboard
+6. Test with real vendors and improve
