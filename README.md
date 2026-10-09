@@ -228,3 +228,78 @@ said about current buyers or what vendors said about import prices._
 7. Lusa, 1 Sept 2026, OCHA figures on food insecurity:
    https://aman-alliance.org/Home/ContentDetail/106306
 
+# Design
+
+The design stage defines who uses Terra, how they move through it,
+and how it looks. Terra is built for people who may have limited
+data, older phones and little time, so the design aims to be simple,
+fast and clear.
+
+### 2.1 Design principles
+
+- **Simple first.** Few steps, large buttons, minimal typing.
+- **Mobile first.** Most farmers and vendors will use Terra on a phone.
+- **Low data.** Light pages and few images so it loads on slow
+  connections.
+- **Trust.** Clear order status and payment steps, because trust is
+  the main gap Terra fills.
+- **Portuguese first.** The interface will be in Portuguese, with
+  English as a secondary language.
+
+### 2.2 Users and roles
+
+| Role | Goal | Key screens |
+|---|---|---|
+| Farmer | List produce, get paid before pickup | Register, add produce, orders, payments |
+| Vendor | Order reliable local produce | Browse produce, place order, order status |
+| Admin | Verify users, manage orders and pickups | Verification, orders, ground agents |
+
+### 2.3 User flows
+
+**Farmer:** Register -> Admin verifies -> List produce and quantity
+-> Order matched -> Paid before truck moves -> Produce collected by
+ground agent
+
+**Vendor:** Register -> Browse available produce -> Place order and
+pay upfront -> Track order -> Receive delivery in Maputo
+
+**Admin:** Review new farmers and vendors -> Approve or reject ->
+Monitor orders -> Assign pickups -> Resolve issues
+
+### 2.4 Visual identity
+
+- **Colors:** Green `#2A5C22` for the primary brand color and cream
+  `#F5F0E8` for backgrounds. Green connects to farming and growth.
+  Cream keeps the design warm and readable.
+- **Typography:** Cormorant Garamond for headings and Outfit for body
+  text and buttons.
+- **Tone:** Warm, trustworthy and local.
+
+### 2.5 Design deliverables
+
+- [ ] User flows for the three roles
+- [ ] Wireframes for key screens
+- [ ] Color palette and typography defined
+- [ ] High-fidelity mockups (Figma)
+- [ ] Mobile responsive layouts
+- [ ] Portuguese copy for all screens
+
+### 2.6 Design decisions
+
+- **Aggregator, not marketplace:** farmers do not sell directly to
+  vendors, so the screens are simpler. Farmers list produce and
+  vendors order from Terra.
+- **Payment before movement:** order status screens show payment
+  clearly, so both sides trust the process.
+- **Role-based access:** each role sees only its own tools.
+
+### 2.7 Terra AI (planned)
+
+An LLM-powered feature that recommends produce to vendors based on
+market trends. It will appear as a simple suggestions panel on the
+vendor dashboard, not a chat window.
+
+### 2.8 Design files
+
+- Figma: _add link_
+- Screenshots: _add to /docs/design_
