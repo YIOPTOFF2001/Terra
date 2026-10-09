@@ -233,7 +233,21 @@ said about current buyers or what vendors said about import prices._
 The design stage defines who uses Terra, how they move through it,
 and how it looks. Terra is built for people who may have limited
 data, older phones and little time, so the design aims to be simple,
-fast and clear.
+fast and clear. 
+
+- What should the app contain, what features are needed to solve the actual problem? ( Farmers)
+Terra connects farmers to vendors from across the country. So farmers need to be able to list their produce on the app and set the price at which they are going to sell the stock.
+- Farmers need an easy form of money transfer method. Because most farmers are from rural areas, the most common and easy form of receiving and sending money is M-Pesa.
+- Farmers need to have a collection point. Terra will arrange a collection point for all local framers willing to sell their produce. Terra will then collected the produce to its storage facilities.
+- Farmers will immediately receive their payment after Terra has confirmed their produce quality.
+
+- What should the app contain, what features are needed to solve the actual problem? (Vendors)
+- Vendors should be able to order food or stock from Terra, while Terra delivers directly to their doorsteps.
+- Terra will stock up lots of food to ensure that food is still available during unfavorable weather conditions.
+- Terra delivers in less than 24 hours.
+- The app should enable vendors to enter their addresses and payment details.
+
+  
 
 ### 2.1 Design principles
 
@@ -299,7 +313,65 @@ An LLM-powered feature that recommends produce to vendors based on
 market trends. It will appear as a simple suggestions panel on the
 vendor dashboard, not a chat window.
 
-### 2.8 Design files
+### 2.8 App feautures
 
-- Figma: _add link_
-- Screenshots: _add to /docs/design_
+
+#### Core platform
+- [x] Role-based accounts: farmer, vendor and admin
+- [x] Authentication (register and log in) with protected routes
+- [x] Aggregator model: Terra buys from verified farmers and resells
+      to vendors
+- [x] Produce marketplace view
+- [ ] Portuguese and English interface
+- [ ] Mobile-responsive layout for low-end phones and slow connections
+
+#### Farmer features
+- [ ] Register and submit details for verification
+- [ ] List produce with type, quantity and expected availability date
+- [ ] Update or remove listings
+- [ ] View order status for their produce
+- [ ] Payment confirmation before pickup (farmers are paid before
+      trucks move)
+- [ ] Pickup schedule with the assigned ground agent
+- [ ] Order and payment history
+
+#### Vendor features
+- [ ] Register and submit details for verification
+- [ ] Browse available produce (launch products: potatoes and onions)
+- [ ] See price and available quantity
+- [ ] Place an order
+- [ ] Pay upfront before the order is confirmed
+- [ ] Track order status from confirmation to delivery in Maputo
+- [ ] Order history and reorder
+
+#### Admin features
+- [ ] Verify or reject farmer and vendor accounts
+- [ ] View and manage all listings and orders
+- [ ] Set and update prices
+- [ ] Assign ground agents to pickups
+- [ ] Track payments (farmers paid, vendors paid)
+- [ ] Monitor deliveries from farm to Maputo
+- [ ] Basic reports: volumes, prices, orders per region
+
+#### Ground agent coordination
+- [ ] Local coordinators in supply regions (Gaza, Boane, Niassa, Manica)
+- [ ] Pickup confirmation and quantity check
+- [ ] Quality check notes at collection
+
+#### Trust and payments
+- [ ] Verified-user badges
+- [ ] Clear payment status on every order
+- [ ] Notifications (SMS or WhatsApp) for order updates
+
+#### Terra AI (planned)
+- [ ] LLM-powered produce recommendations for vendors
+- [ ] Short summaries of market trends and prices
+- [ ] Suggestions shown on the vendor dashboard
+
+#### Planned later
+- [ ] More products beyond potatoes and onions
+- [ ] More supply regions
+- [ ] Mobile money payments integration
+- [ ] Offline-friendly mode for areas with poor connectivity
+
+
