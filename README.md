@@ -843,3 +843,55 @@ real order data to learn from.
 4. Connect the LLM API and test the outputs
 5. Add the suggestions panel to the vendor dashboard
 6. Test with real vendors and improve
+
+## 8. Conclusion
+
+Mozambique has smallholder farmers who can grow food and vendors in
+Maputo who need it, yet the two are poorly connected. Much of the
+country's potato and onion supply still comes from South Africa,
+while the government itself has named Gaza as a province capable of
+replacing those imports. Terra exists to close that gap.
+
+Terra is an aggregator, not a marketplace. It buys directly from
+verified smallholder farmers and resells to vendors in Maputo, with
+ground agents on the ground and a simple rule that builds trust:
+farmers are paid before trucks move, and vendors pay upfront.
+
+### Where Terra stands today
+
+- **Market validation:** in progress, with outreach to farmers and
+  vendors and research into import data and supply regions
+- **Design:** user flows and a visual identity (green and cream
+  palette, Cormorant Garamond and Outfit fonts) defined
+- **Development:** React frontend and Node.js, Express and MongoDB
+  backend built, with authentication and role-based access for
+  farmers, vendors and admins
+- **Next:** finish the core features, test with real users, and
+  launch the pilot once 5 farmers and 5 vendors are confirmed
+- **Later:** review the pilot, scale to more products and regions,
+  and add Terra AI
+
+### What this project demonstrates
+
+- Identifying a real problem and backing it with data and sources
+- Designing a business model suited to the local context
+- Building a full-stack application (React, Node.js, MongoDB)
+- Planning in stages, with clear exit criteria before launch
+- Being honest about what is built, what is planned and what is
+  still unknown
+
+### Vision
+
+Terra's goal is simple: help farmers earn from their harvest, help
+vendors get reliable local produce, and keep more of Mozambique's
+food value inside Mozambique.
+
+### Author
+
+**Yolanda Mussana**, full-stack developer
+GitHub: [YIOPTOFF2001](https://github.com/YIOPTOFF2001)
+
+### Acknowledgements
+
+Thank you to the farmers, vendors and market contacts who have
+shared their time and knowledge during validation.
