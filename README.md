@@ -1,4 +1,4 @@
-# Terra 🌱:  A farming app for Mozambique
+# Terra 🌱:  Connect farmers to vendors
 
 ![Terra Project Overview](./Images/terra.png)
 
@@ -7,9 +7,9 @@
 - [Objective](#objective)
 - [Data Source](#data-source)
 - [Stages](#stages)
-- [Market validation](##market-validation)
-- [Design](#design)
-- [Development](#development)
+- [1. Market Validation](#1-market-validation-in-progress)
+-  [2. Design](#2-design)
+- [3. Development](#3-development)
 - [Testing](#data-quality-tests)
 - [Pilot Launch](#pilot-launch)
 - [Terra AI](#terra-ai)
