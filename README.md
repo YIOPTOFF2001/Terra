@@ -226,17 +226,22 @@ and how it looks. Terra is built for people who may have limited
 data, older phones and little time, so the design aims to be simple,
 fast and clear. 
 
-- What should the app contain, what features are needed to solve the actual problem? ( Farmers)
-Terra connects farmers to vendors from across the country. So farmers need to be able to list their produce on the app and set the price at which they are going to sell the stock.
+### Farmers
+What should the app contain, what features are needed to solve the actual problem?
+  
+-Terra connects farmers to vendors from across the country. So farmers need to be able to list their produce on the app and set the price at which they are going to sell the stock.
 - Farmers need an easy form of money transfer method. Because most farmers are from rural areas, the most common and easy form of receiving and sending money is M-Pesa.
 - Farmers need to have a collection point. Terra will arrange a collection point for all local framers willing to sell their produce. Terra will then collected the produce to its storage facilities.
 - Farmers will immediately receive their payment after Terra has confirmed their produce quality.
 
-- What should the app contain, what features are needed to solve the actual problem? (Vendors)
+### Vendors
+What should the app contain, what features are needed to solve the actual problem? 
+
 - Vendors should be able to order food or stock from Terra, while Terra delivers directly to their doorsteps.
 - Terra will stock up lots of food to ensure that food is still available during unfavorable weather conditions.
 - Terra delivers in less than 24 hours.
 - The app should enable vendors to enter their addresses and payment details.
+- Vendors need to be ensured that stock is reliable and quality is consistent.
 
   
 
@@ -282,11 +287,11 @@ Monitor orders -> Assign pickups -> Resolve issues
 
 ### 2.5 Design deliverables
 
-- [ ] User flows for the three roles
+- [x] User flows for the three roles
 - [ ] Wireframes for key screens
-- [ ] Color palette and typography defined
-- [ ] High-fidelity mockups (Figma)
-- [ ] Mobile responsive layouts
+- [x] Color palette and typography defined
+- [x] High-fidelity mockups (Figma)
+- [x] Mobile responsive layouts
 - [ ] Portuguese copy for all screens
 
 ### 2.6 Design decisions
@@ -302,7 +307,7 @@ Monitor orders -> Assign pickups -> Resolve issues
 
 An LLM-powered feature that recommends produce to vendors based on
 market trends. It will appear as a simple suggestions panel on the
-vendor dashboard, not a chat window.
+vendor dashboard, not a chat window. It will encourage vendors to stock up during unfavourable weather conditions and it will inform vendors when stock is running out.
 
 ### 2.8 App feautures
 
@@ -317,14 +322,14 @@ vendor dashboard, not a chat window.
 - [ ] Mobile-responsive layout for low-end phones and slow connections
 
 #### Farmer features
-- [ ] Register and submit details for verification
-- [ ] List produce with type, quantity and expected availability date
-- [ ] Update or remove listings
-- [ ] View order status for their produce
-- [ ] Payment confirmation before pickup (farmers are paid before
+- [x] Register and submit details for verification
+- [x] List produce with type, quantity and selling price
+- [x] Update or remove listings
+- [x] View order status for their produce
+- [x] Payment confirmation before pickup (farmers are paid before
       trucks move)
-- [ ] Pickup schedule with the assigned ground agent
-- [ ] Order and payment history
+- [x] Pickup schedule with the assigned ground agent
+- [x] Order and payment history
 
 #### Vendor features
 - [ ] Register and submit details for verification
@@ -336,23 +341,23 @@ vendor dashboard, not a chat window.
 - [ ] Order history and reorder
 
 #### Admin features
-- [ ] Verify or reject farmer and vendor accounts
-- [ ] View and manage all listings and orders
-- [ ] Set and update prices
-- [ ] Assign ground agents to pickups
-- [ ] Track payments (farmers paid, vendors paid)
-- [ ] Monitor deliveries from farm to Maputo
-- [ ] Basic reports: volumes, prices, orders per region
+- [x] Verify or reject farmer and vendor accounts
+- [x] View and manage all listings and orders
+- [x] Set and update prices
+- [x] Assign ground agents to pickups
+- [x] Track payments (farmers paid, vendors paid)
+- [x] Monitor deliveries from farm to Maputo
+- [x] Basic reports: volumes, prices, orders per region
 
 #### Ground agent coordination
-- [ ] Local coordinators in supply regions (Gaza, Boane, Niassa, Manica)
-- [ ] Pickup confirmation and quantity check
-- [ ] Quality check notes at collection
+- [x] Local coordinators in supply regions (Gaza, Boane, Niassa, Manica)
+- [x] Pickup confirmation and quantity check
+- [x] Quality check notes at collection
 
 #### Trust and payments
-- [ ] Verified-user badges
-- [ ] Clear payment status on every order
-- [ ] Notifications (SMS or WhatsApp) for order updates
+- [x] Verified-user badges
+- [x] Clear payment status on every order
+- [x] Notifications (SMS or WhatsApp) for order updates
 
 #### Terra AI (planned)
 - [ ] LLM-powered produce recommendations for vendors
@@ -478,8 +483,8 @@ from Atlas.
 - [x] Ordering flow (vendors)
 - [x] Admin verification and order management
 - [x] Payment status tracking
-- [x] Notifications
-- [x] Terra AI recommendation layer
+- [ ] Notifications
+- [ ] Terra AI recommendation layer
 
 ### 3.9 Challenges and decisions
 
@@ -511,14 +516,14 @@ on correctness, security and ease of use on basic phones.
 
 **Authentication**
 - [ ] Register with valid details
-- [ ] Register with a duplicate email or phone number is rejected
-- [ ] Log in with correct credentials
-- [ ] Log in with wrong credentials shows a clear error
+- [x] Register with a duplicate email or phone number is rejected
+- [x] Log in with correct credentials
+- [x] Log in with wrong credentials shows a clear error
 - [ ] Logged-out users cannot open protected pages
 
 **Farmer**
-- [ ] Add, edit and remove a produce listing
-- [ ] View orders for their produce
+- [x] Add, edit and remove a produce listing
+- [x] View orders for their produce
 - [ ] Payment status displays correctly
 
 **Vendor**
@@ -534,10 +539,10 @@ on correctness, security and ease of use on basic phones.
 
 ### 4.3 Role-based access testing
 
-- [ ] A farmer cannot open vendor or admin pages
-- [ ] A vendor cannot open farmer or admin pages
-- [ ] Only admins can verify users or change prices
-- [ ] Expired or invalid tokens are rejected
+- [x] A farmer cannot open vendor or admin pages
+- [x] A vendor cannot open farmer or admin pages
+- [x] Only admins can verify users or change prices
+- [x] Expired or invalid tokens are rejected
 
 ### 4.4 API testing
 
@@ -547,7 +552,7 @@ Backend routes tested with Postman (or a similar tool):
 |---|---|---|---|
 | /api/auth/register | POST | User created | [ ] |
 | /api/auth/login | POST | Token returned | [ ] |
-| _add your routes_ | | | |
+
 
 ### 4.5 Usability testing with real users
 
@@ -559,7 +564,7 @@ pilot, before the full launch.
 - [ ] Is the Portuguese text clear to them?
 - [ ] Does the app load acceptably on their phones and data?
 
-**Feedback received:** _add real quotes and findings here_
+**Feedback received:** _pending_
 
 ### 4.6 Compatibility testing
 
@@ -717,7 +722,7 @@ assumptions.
 
 ### 6.5 Lessons learned
 
-_Add real lessons after the pilot._
+__
 
 ### 6.6 Scaling plan
 
