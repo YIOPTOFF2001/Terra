@@ -10,12 +10,10 @@
 - [1. Market Validation](#1-market-validation-in-progress)
 -  [2. Design](#2-design)
 - [3. Development](#3-development)
-- [Testing](#data-quality-tests)
-- [Pilot Launch](#pilot-launch)
-- [Terra AI](#terra-ai)
-  - [Findings](#findings)
-  - [Validation](#validation)
-  - [Discovery](#discovery)
+- [4. Testing](#4-testing)
+- [5. Pilot Launch](#5-pilot-launch) 
+- [6. Review and scale](#6-review-and-scale)
+- [7. Terra AI](#7-terra-ai)
 - [Conclusion](#conclusion)
 
 
@@ -836,7 +834,7 @@ real order data to learn from.
 5. Add the suggestions panel to the vendor dashboard
 6. Test with real vendors and improve
 
-## 8. Conclusion
+## Conclusion
 
 Mozambique has smallholder farmers who can grow food and vendors in
 Maputo who need it, yet the two are poorly connected. Much of the
