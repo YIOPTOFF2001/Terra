@@ -7,7 +7,7 @@
 - [Objective](#objective)
 - [Data Source](#data-source)
 - [Stages](#stages)
-- Market validation(##market-validation)
+- [Market validation](##market-validation)
 - [Design](#design)
 - [Development](#development)
 - [Testing](#data-quality-tests)
