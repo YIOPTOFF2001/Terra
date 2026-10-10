@@ -187,6 +187,8 @@ NB: Farmers are currently selling at market price. 10 kg of potatoes ranges from
 ### 1.7 Key findings so far
 
 ![Sample](Images/sample.jpeg) 
+
+
 A sample conversation between myself and a farmer. He highlights that government has restricted the export of food to Malawi due to the country's food insecurity isses. He has lost reliable income because he can't find a new market.
 
 ### 1.8 Risks and open questions
