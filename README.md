@@ -56,6 +56,7 @@ In this way, food wastage will reduce as farmers will have a market to sell to a
 - I want to make sure that I always have stock because I have a lot of customers.
 - The qulity of produce is very important to me.
 - I want fast deliveries.
+- The cost of transporting food across borders has become more and more expensive. The conflict in Iran has contributed to Mozambique's rising cost of fuel making transportng food even more expensive.
 
 
 # Data source 
@@ -175,11 +176,13 @@ are an indirect benefit.
 
 ### 1.6 Exit criteria (no launch until met)
 
-- [ ] At least 5 farmers confirmed (current: _/5)
-- [ ] At least 5 vendors confirmed (current: _/5)
-- [ ] Price per kg confirmed with farmers: _ MZN
+- [x] At least 5 farmers confirmed (current: 6/5)
+- [x] At least 5 vendors confirmed (current: 4/5)
+- [ ] Price per kg confirmed with farmers: _ MZN 
 - [ ] Price per kg vendors currently pay: _ MZN
 - [ ] Transport cost per trip from Gaza to Maputo: _ MZN
+
+NB: Farmers are currently selling at market price. 10 kg of potatoes ranges from 350 MZN.
 
 ### 1.7 Key findings so far
 
