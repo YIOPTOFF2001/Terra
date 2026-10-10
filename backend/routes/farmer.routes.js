@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { protect, authorizeRoles } = require('../middleware/auth.middleware');
 const User = require('../models/User');
-const Produce = require('../models/Produce');
+const Produce = require('../models/produce');
 const BankingDetails = require('../models/BankingDetails');
 
 // GET /api/farmer/dashboard
