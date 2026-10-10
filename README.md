@@ -13,7 +13,7 @@
 - [4. Testing](#4-testing)
 - [5. Pilot Launch](#5-pilot-launch) 
 - [6. Review and scale](#6-review-and-scale)
-- [7. Terra AI](#7-terra-ai)
+- [7. Terra AI ](#7-terra-ai-planned)
 - [Conclusion](#conclusion)
 
 
